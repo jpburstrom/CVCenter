@@ -114,7 +114,7 @@ CVWidgetEditor {
 			};
 
 			window = Window("Widget Editor:"+widgetName++slotHiLo, Rect(
-				gapNextX ?? { nextX }, gapNextY ?? { nextY }, 270, 265
+				gapNextX ?? { nextX }, gapNextY ?? { nextY }, 370, 265 //width was 270
 			));
 
 			xySlots = xySlots.add([nextX@nextY, name++slotHiLo]);
@@ -173,6 +173,7 @@ CVWidgetEditor {
 					97, { thisEditor[\tabs].focus(3) }, // "a" -> actions
 					115, { thisEditor[\tabs].focus(0) }, // "s" -> specs
 					120, { this.close(slot) }, // "x" -> close editor
+                    27, { this.close(slot) }, // "Esc" -> close editor
 					99, { OSCCommands.makeWindow } // "c" -> collect OSC-commands resp. open the collector's GUI
 				)
 			});
