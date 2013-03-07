@@ -835,11 +835,12 @@ CVCenter {
 		})
 	}
 
-	// spec inference - if it does not find the name, zaps all the non-alpha and looks again
-	// This allows "freq 1" to resolve to \freq
+	// spec inference - if it does not find the name,
+    // split the name string, pick the last part, zap all the non-alpha and look again
+	// This allows "namespace.freq 1" to resolve to \freq
 	*findSpec { |name|
 		var spec = name.asSymbol.asSpec;
-		spec ?? { spec = name.asString.select({ |c| c.isAlpha }).asSymbol.asSpec };
+        spec ?? { spec = name.asString.split($.).last.select({ |c| c.isAlpha }).asSymbol.asSpec };
 		^spec;
 	}
 

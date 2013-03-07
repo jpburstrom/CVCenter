@@ -131,17 +131,17 @@ CVWidgetKnob : CVWidget {
 		widgetBg = UserView(window, Rect(thisXY.x, thisXY.y, thisWidth, thisHeight))
 			.background_(this.bgColor)
 		;
-		label = Button(window, Rect(thisXY.x+1, thisXY.y+1, thisWidth-2, 15))
-			.states_([
-				[""+thisName.asString, Color.white, Color.blue],
-				[""+thisName.asString, Color.black, Color.yellow],
-			])
-			.font_(Font("Helvetica", 9))
-		;
+		label = Button(window, Rect(thisXY.x, thisXY.y, thisWidth, 15))
+        .states_([
+            [""+thisName.asString.split($.).last, Color.white, Color.blue],
+            [""+thisName.asString.split($.), Color.black, Color.yellow],
+        ])
+        .font_(Font("Helvetica", 9))
+        ;
 		nameField = TextView(window, Rect(label.bounds.left, label.bounds.top+label.bounds.height, thisWidth-2, thisHeight-label.bounds.height-2))
 			.background_(Color.white)
 			.font_(Font("Helvetica", 9))
-			.string_("Add some notes if you like")
+			.string_(thisName.asString)
 			.visible_(false)
 			.keyUpAction_({ wdgtInfo = nameField.string })
 		;
