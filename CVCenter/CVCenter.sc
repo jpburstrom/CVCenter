@@ -598,6 +598,7 @@ CVCenter {
 			});
 			window.front;
 		});
+        this.prRegroupWidgets(tabs.activeTab);
 		window.front;
 
 		skipJacks = SkipJack.all.collect({ |r| r === updateRoutine });
